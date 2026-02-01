@@ -4,31 +4,31 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class QueueTests {
-    Queue<String> sut;
+public class StackTests {
+    Stack<String> sut;
 
     @BeforeEach
     public void initialzie() {
-        sut = new Queue<>();
+        sut = new Stack<>();
     }
 
     @Test 
-    public void enqueue_dequeue_test() {
-        sut.enqueue("test");
-        sut.enqueue("test2");
+    public void push_pop_test() {
+        sut.push("test");
+        sut.push("test2");
 
         assertEquals(2, sut.size());
-        assertEquals("test", sut.dequeue());
+        assertEquals("test2", sut.pop());
         assertEquals(1, sut.size());
     }
 
     @Test 
     public void peek_test() {
-        sut.enqueue("test");
-        sut.enqueue("test2");
+        sut.push("test");
+        sut.push("test2");
 
         assertEquals(2, sut.size());
-        assertEquals("test", sut.peek());
+        assertEquals("test2", sut.peek());
         assertEquals(2, sut.size());
     }
 }
