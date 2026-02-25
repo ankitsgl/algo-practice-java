@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordSearch {
-    private final int[][] possibleMoves = {
+    private final int[][] MOVES = {
         {1, 0},
         {0, 1},
         {-1, 0},
@@ -54,8 +54,8 @@ public class WordSearch {
         char temp = board[r][c];
         board[r][c] = '#';
 
-        for (int[] possibleMove : possibleMoves) {
-            if (dfs(board, r + possibleMove[0], c + possibleMove[1], word, index + 1)) {
+        for (int[] move : MOVES) {
+            if (dfs(board, r + move[0], c + move[1], word, index + 1)) {
                 return true;
             }
         }
