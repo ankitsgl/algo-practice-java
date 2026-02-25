@@ -10,7 +10,7 @@ public class LinkedListTests {
 
     @BeforeEach
     public void initialzie() {
-        sut = new LinkedList<>();
+        sut = new LinkedList<String>();
     }
 
     @Test 
