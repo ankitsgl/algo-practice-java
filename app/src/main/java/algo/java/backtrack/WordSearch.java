@@ -38,9 +38,9 @@ public class WordSearch {
 
     private Boolean dfs(char[][] board, int r, int c, String word, int index) {
         if (r < 0 || 
-            r > board.length - 1|| 
+            r >= board.length||
             c < 0 || 
-            c > board[0].length -1 || 
+            c >= board[0].length ||
             board[r][c] == '#' || // Aleady visited
             board[r][c] != word.charAt(index)) {
             return false;
@@ -54,8 +54,8 @@ public class WordSearch {
         char temp = board[r][c];
         board[r][c] = '#';
 
-        for(int moveIndex = 0; moveIndex < possibleMoves.length; moveIndex++){
-            if (dfs(board, r + possibleMoves[moveIndex][0], c + possibleMoves[moveIndex][1], word, index + 1 )) {
+        for (int[] possibleMove : possibleMoves) {
+            if (dfs(board, r + possibleMove[0], c + possibleMove[1], word, index + 1)) {
                 return true;
             }
         }

@@ -20,18 +20,14 @@ public class WordSearchTest {
     private final WordSearch sut = new WordSearch();
 
     @Test void wordExists_true() {
-        ArrayUtils.printArray(board);
         assertTrue(sut.exists(board, "abczxa"));
     }  
     
     @Test void wordExists_false() {
-        ArrayUtils.printArray(board);
-
         assertFalse(sut.exists(board, "abcfxa"));
     }
     
     @Test void searchSingleWord_success() {
-        ArrayUtils.printArray(board);
         List<String> words = List.of("abczxa");
 
         List<String> foundWords = sut.searchWords(board, words);
@@ -41,7 +37,6 @@ public class WordSearchTest {
     } 
     
     @Test void searchMultipleWord_success() {
-        ArrayUtils.printArray(board);
         List<String> words = List.of("abczxa", "dcba");
 
         List<String> foundWords = sut.searchWords(board, words);
@@ -52,7 +47,6 @@ public class WordSearchTest {
     }
 
     @Test void searchMultipleWord_notFound() {
-        ArrayUtils.printArray(board);
         List<String> words = List.of("abdzxa", "dssa");
 
         List<String> foundWords = sut.searchWords(board, words);
