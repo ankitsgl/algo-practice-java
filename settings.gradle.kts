@@ -12,4 +12,3 @@ plugins {
 
 rootProject.name = "algo-java"
 include("src")
-include("tst")
