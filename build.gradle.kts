@@ -10,6 +10,11 @@ plugins {
     application
 }
 
+java.sourceSets {
+    getByName("main").java.srcDir("src")
+    getByName("test").java.srcDir("tst")
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
