@@ -90,13 +90,17 @@ public class TicTacToe {
     }
 
     public static void main(String[] args) {
-        System.out.println("Lets play TicTacToe game... Enter -1 to exit");
-        TicTacToe game = new TicTacToe(3);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lets play TicTacToe game... Enter -1 to exit anytime");
+        System.out.print("Board size? ");
+        int boardSize = Integer.parseInt(scanner.nextLine());
+        System.out.println("Amazing that you want to play on %s x %s board. Lets the game begin...");
+
+        TicTacToe game = new TicTacToe(boardSize);
         game.printBoard();
 
         int player = 1;
         String input = "";
-        Scanner scanner = new Scanner(System.in);
 
         while(input != "-1") {
             try {
