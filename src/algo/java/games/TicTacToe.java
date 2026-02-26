@@ -12,7 +12,7 @@ public class TicTacToe {
 
     private int[] rowSum;
     private int[] colSum;
-    private int diagonalSum;
+    private int diagnalSum;
     private int revDiagnalSum;
     private int lastPlayer;
 
@@ -55,7 +55,7 @@ public class TicTacToe {
         rowSum[row] = rowSum[row] + player;
         colSum[col] = colSum[col] + player;
         if ( row == col) {
-            diagonalSum = diagonalSum + player;
+            diagnalSum = diagnalSum + player;
         }
 
         if (row == boardSize - 1 - col) {
@@ -64,7 +64,7 @@ public class TicTacToe {
 
         if (Math.abs(rowSum[row]) == boardSize ||
                 Math.abs(colSum[col]) == boardSize ||
-                Math.abs(diagonalSum) == boardSize ||
+                Math.abs(diagnalSum) == boardSize ||
                 Math.abs(revDiagnalSum) == boardSize) {
             return playerNumber;
         }
