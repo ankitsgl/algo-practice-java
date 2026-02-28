@@ -40,4 +40,14 @@ public class LinkedListTests {
         assertEquals("test3", sut.getLast());
     }
 
+    @Test
+    public void fromArray_test() {
+        Integer[] array = {1,2,3,4};
+
+        LinkedList<Integer> linkedList = LinkedList.fromArray(array);
+
+        assertEquals(1, linkedList.getFirst());
+        assertEquals(4, linkedList.getLast());
+
+    }
 }

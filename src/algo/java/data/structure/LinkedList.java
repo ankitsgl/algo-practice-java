@@ -96,4 +96,16 @@ public class LinkedList<T> {
             this.next = null;
         }
     }
+
+    public static <U> LinkedList<U> fromArray(U[] array){
+        if (array == null || array.length == 0) {
+            return null;
+        }
+        LinkedList<U> linkedList = new LinkedList<>();
+        for(U item : array) {
+            linkedList.addLast(item);
+        }
+
+        return linkedList;
+    }
 }

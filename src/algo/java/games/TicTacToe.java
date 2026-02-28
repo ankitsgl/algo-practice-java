@@ -102,7 +102,7 @@ public class TicTacToe {
         int player = 1;
         String input = "";
 
-        while(input != "-1") {
+        while(!input.equals("-1")) {
             try {
                 System.out.print("Player %s enter row,col: ".formatted(player));
                 input = scanner.nextLine();
