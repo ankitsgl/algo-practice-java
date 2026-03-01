@@ -86,15 +86,18 @@ public class LinkedList<T> {
         System.out.println("");
     }
 
-
-    private class Node<T> {
-        public T data; 
-        public Node<T> next;
-
-        public Node(T data) {
-            this.data = data;
-            this.next = null;
+    @Override
+    public String toString() {
+        Node<T> current = head;
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        while (current != null) {
+            sb.append("%s->".formatted(current.data));
+            current = current.next;
         }
+        sb.append("]");
+
+        return sb.toString();
     }
 
     public static <U> LinkedList<U> fromArray(U[] array){
@@ -107,5 +110,98 @@ public class LinkedList<T> {
         }
 
         return linkedList;
+    }
+
+    // Leet code: https://leetcode.com/problems/reverse-linked-list/
+    public void reverse() {
+        if(head == null) {
+            // Empty list and nothing to reverse
+            return;
+        }
+
+        Node<T> prev = null;
+        Node<T> current = head;
+
+        while(current != null) {
+            Node<T> next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        tail = head;
+        head = prev;
+    }
+
+    // Leet code: https://leetcode.com/problems/reverse-linked-list-ii/
+    public void partialReverse(T left, T right) {
+        if(head == null) {
+            // Empty list and nothing to reverse
+            return;
+        }
+
+        Node<T> startNode = null;
+        Node<T> endNode = null;
+        Node<T> current = head;
+        Node<T> sub1Tail = null;
+        Node<T> sub2Head = null;
+        Node<T> prev = null;
+
+        while(current != null) {
+            if(current.data.equals(left)) {
+                startNode = current;
+                sub1Tail = prev;
+            }
+
+            if(current.data.equals(right)) {
+                endNode = current;
+                sub2Head = current.next;
+                break;
+            }
+            prev = current;
+            current = current.next;
+        }
+
+        if(startNode == null || endNode == null) {
+            return;
+        }
+
+        // Break linked list;
+
+        if (sub1Tail != null) {
+            sub1Tail.next = null;
+        }
+
+        endNode.next = null;
+
+        current = startNode;
+        prev = null;
+
+        while(current != null) {
+            Node<T> next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        // Join linked list
+
+        if (sub1Tail == null) {
+            head.next = sub2Head;
+            head = prev;
+        } else {
+            sub1Tail.next = prev;
+            startNode.next = sub2Head;
+        }
+    }
+
+    private class Node<T> {
+        public T data; 
+        public Node<T> next;
+
+        public Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 }

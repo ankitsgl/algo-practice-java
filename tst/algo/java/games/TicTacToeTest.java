@@ -10,7 +10,7 @@ public class TicTacToeTest {
     private static final int PLAYER_1 = 1;
     private static final int PLAYER_2 = 2;
 
-    @Test public void move_succes() {
+    @Test public void move_success() {
         assertEquals(0, game.move(PLAYER_1, 0, 0));
         assertEquals(0, game.move(PLAYER_2, 1, 0));
         assertEquals(0, game.move(PLAYER_1, 0, 1));

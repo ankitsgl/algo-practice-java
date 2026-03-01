@@ -48,6 +48,65 @@ public class LinkedListTests {
 
         assertEquals(1, linkedList.getFirst());
         assertEquals(4, linkedList.getLast());
+    }
 
+    @Test
+    public void reverse_test() {
+        Integer[] array = {1,2,3,4};
+
+        LinkedList<Integer> linkedList = LinkedList.fromArray(array);
+        linkedList.print();
+        linkedList.reverse();
+        linkedList.print();
+
+        assertEquals("[4->3->2->1->]", linkedList.toString());
+    }
+
+    @Test
+    public void partialReverse_test_inBetween() {
+        Integer[] array = {1,2,3,4,5,6};
+
+        LinkedList<Integer> linkedList = LinkedList.fromArray(array);
+        linkedList.print();
+        linkedList.partialReverse(3,5);
+        linkedList.print();
+
+        assertEquals("[1->2->5->4->3->6->]", linkedList.toString());
+    }
+
+    @Test
+    public void partialReverse_test_full() {
+        Integer[] array = {1,2,3,4,5,6};
+
+        LinkedList<Integer> linkedList = LinkedList.fromArray(array);
+        linkedList.print();
+        linkedList.partialReverse(1,6);
+        linkedList.print();
+
+        assertEquals("[6->5->4->3->2->1->]", linkedList.toString());
+    }
+
+    @Test
+    public void partialReverse_test_firstPart() {
+        Integer[] array = {1,2,3,4,5,6};
+
+        LinkedList<Integer> linkedList = LinkedList.fromArray(array);
+        linkedList.print();
+        linkedList.partialReverse(1,4);
+        linkedList.print();
+
+        assertEquals("[4->3->2->1->5->6->]", linkedList.toString());
+    }
+
+    @Test
+    public void partialReverse_test_secondPart() {
+        Integer[] array = {1,2,3,4,5,6};
+
+        LinkedList<Integer> linkedList = LinkedList.fromArray(array);
+        linkedList.print();
+        linkedList.partialReverse(3,6);
+        linkedList.print();
+
+        assertEquals("[1->2->6->5->4->3->]", linkedList.toString());
     }
 }
