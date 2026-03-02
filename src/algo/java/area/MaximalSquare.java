@@ -1,5 +1,7 @@
 package algo.java.area;
 
+import java.util.Arrays;
+
 import algo.java.utils.ArrayUtils;
 
 public class MaximalSquare {
@@ -33,6 +35,43 @@ public class MaximalSquare {
 
         int val = 1 + Math.min(right, Math.min(down, diag));
         ans[0] = Math.max(ans[0], val);
+        return val;
+    }
+
+    public int maximalSquareOptimized(char[][] matrix) {
+        // This is a bruitforce solution
+        int[][] memory = new int[matrix.length][matrix[0].length];
+        for(int[]row : memory) {
+            Arrays.fill(row, -1);
+        }
+
+        int[] ans = new int[1];
+        maximalSquareRecWithMemory(0, 0, matrix, memory, ans);
+        return ans[0];
+    }
+
+    private int maximalSquareRecWithMemory(int row, int col, char[][] matrix, int[][] memory, int[] ans) {
+        if (row < 0 || row == matrix.length || col < 0 || col == matrix[0].length) {
+            return 0;
+        }
+
+        // Lookup in memory and return if already calculated
+        if (memory[row][col] != -1) {
+            return memory[row][col];
+        }
+
+        // calculate sides 
+        int right = maximalSquareRecWithMemory(row + 1, col, matrix, memory, ans);
+        int down = maximalSquareRecWithMemory(row, col + 1, matrix, memory,ans);
+        int diag = maximalSquareRecWithMemory(row +1 , col + 1, matrix, memory, ans);
+
+        if (matrix[row][col] != '1') {
+            return 0;
+        }
+
+        int val = 1 + Math.min(right, Math.min(down, diag));
+        ans[0] = Math.max(ans[0], val);
+        memory[row][col] = val;
         return val;
     }
 
