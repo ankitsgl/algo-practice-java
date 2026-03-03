@@ -11,6 +11,13 @@ public class MaximalSquare {
     g4g: https://www.geeksforgeeks.org/dsa/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/
 
     Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+
+    Key idea: 
+    1. For each cell, caculate the size of filled blocks towards right, down and diagonal. 
+    2. Take the minimum of all three directions and add 1. 
+    3. Recursively calculate the size of blocks for right, down and diagonal directions.
+    4. Store the maximum size of square in answer. 
+    5. Return current size.
     */
     public int maximalSquare(char[][] matrix) {
         // This is a bruitforce solution
