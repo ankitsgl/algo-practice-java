@@ -194,14 +194,4 @@ public class LinkedList<T> {
             startNode.next = sub2Head;
         }
     }
-
-    private class Node<T> {
-        public T data; 
-        public Node<T> next;
-
-        public Node(T data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
 }

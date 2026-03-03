@@ -15,7 +15,7 @@ public class DoubleLinkedList<T> {
             addLast(data);
         }
     }
-    public void addFirst(T data) {
+    public Node<T> addFirst(T data) {
         Node<T> node = new Node<>(data);
         if (head == null) {
             head = tail = node;
@@ -24,9 +24,10 @@ public class DoubleLinkedList<T> {
             head.prev = node; 
             head = node;
         }
+        return node;
     }
 
-    public void addLast(T data) {
+    public Node<T> addLast(T data) {
         Node<T> node = new Node<>(data);
         if (tail == null) {
             head = tail = node;
@@ -35,6 +36,7 @@ public class DoubleLinkedList<T> {
             node.prev = tail;
             tail = node;
         }
+        return node;
     }
 
     public T removeFirst() {
@@ -82,14 +84,20 @@ public class DoubleLinkedList<T> {
         }
         if (current == null) {
             // No matching record found
-        } else  if (current == head) {
+        } else {
+            removeNode(current);
+        }
+    }
+
+    public void removeNode(Node<T> node) {
+        if (node == head) {
             removeFirst();
-        } else if (current == tail) {
-           removeLast();
+        } else if (node == tail) {
+            removeLast();
         } else {
             // Remove in middle;
-            current.prev.next = current.next;
-            current.next.prev = current.prev;
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
         }
     }
 
@@ -119,17 +127,5 @@ public class DoubleLinkedList<T> {
         sb.append("]");
 
         return sb.toString();
-    }
-
-    private class Node<T> {
-        public T data;
-        public Node<T> next;
-        public Node<T> prev;
-
-        public Node(T data) {
-            this.data = data;
-            this.next = null;
-            this.prev = null;
-        }
     }
 }
