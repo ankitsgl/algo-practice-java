@@ -16,7 +16,11 @@ public class DoubleLinkedList<T> {
         }
     }
     public Node<T> addFirst(T data) {
-        Node<T> node = new Node<>(data);
+        return addFirst(new Node<>(data));
+    }
+
+    public Node<T> addFirst(Node<T> node) {
+        node.prev = node.next;
         if (head == null) {
             head = tail = node;
         } else {
@@ -28,7 +32,10 @@ public class DoubleLinkedList<T> {
     }
 
     public Node<T> addLast(T data) {
-        Node<T> node = new Node<>(data);
+        return addLast(new Node<>(data));
+    }
+    public Node<T> addLast(Node<T> node) {
+        node.prev = node.next;
         if (tail == null) {
             head = tail = node;
         } else {
@@ -99,6 +106,11 @@ public class DoubleLinkedList<T> {
             node.prev.next = node.next;
             node.next.prev = node.prev;
         }
+    }
+
+    public void moveToHead(Node<T> node) {
+        removeNode(node);
+        addFirst(node);
     }
 
     public void clear() {
