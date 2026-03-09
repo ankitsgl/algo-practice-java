@@ -5,6 +5,9 @@ public class DoubleLinkedList<T> {
     private Node<T> head;
     private Node<T> tail;
 
+    // Idea: to simplify logic, we can use dummy head and tail node, 
+    // so that we don't need to check for null when adding or removing nodes.
+
     public DoubleLinkedList() {
         head = null;
         tail = null;

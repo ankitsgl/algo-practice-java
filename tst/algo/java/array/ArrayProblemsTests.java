@@ -2,15 +2,15 @@ package algo.java.array;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import algo.java.utils.ArrayUtils;
 
+import static org.junit.jupiter.api.Assertions.*;
 
-public class MergeSortedArrayTests {
-    MergeSortedArray sut = new MergeSortedArray();
+
+public class ArrayProblemsTests {
+    ArrayProblems sut = new ArrayProblems();
 
     @Test void mergeSortedArray() {
         System.out.println("Starting mergeSortedArray...");
@@ -54,5 +54,23 @@ public class MergeSortedArrayTests {
 
         assertEquals(expectedMergedArray.length, mergedArray.length);
         assertTrue(Arrays.equals(expectedMergedArray, mergedArray));
+    }
+
+    @Test
+    public void sumTwo_test() {
+        int[] array = {1,2,4,7,15};
+        int[] result = sut.sumTwo(array, 11);
+        assertEquals(2, result.length);
+        assertEquals(2, result[0]);
+        assertEquals(3, result[1]);
+
+        result = sut.sumTwo(array, 9);
+        assertEquals(2, result.length);
+        assertEquals(1, result[0]);
+        assertEquals(3, result[1]);
+
+
+        result = sut.sumTwo(array, 20);
+        assertNull(result);
     }
 }

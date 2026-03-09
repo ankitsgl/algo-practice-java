@@ -1,6 +1,8 @@
 package algo.java.array;
 
-public class MergeSortedArray {
+import java.util.HashMap;
+
+public class ArrayProblems {
 
     public int[] mergeSortedArray(int[] arrayA, int[]arrayB) {
         int[] result = new int[arrayA.length + arrayB.length];
@@ -26,5 +28,22 @@ public class MergeSortedArray {
         }
 
         return result;
+    }
+
+    /*
+    Leet coed: https://leetcode.com/problems/two-sum/description/
+
+    Submission: https://leetcode.com/problems/two-sum/submissions/1942377229/
+     */
+    public int[] sumTwo(int[] nums, int target) {
+        HashMap<Integer, Integer> memory = new HashMap<>();
+        for(int index = 0; index < nums.length; index++) {
+            Integer difference = target - nums[index];
+            if(memory.containsKey(difference)) {
+                return new int[]{memory.get(target - nums[index]), index};
+            }
+            memory.put(nums[index], index);
+        }
+        return null;
     }
 }
