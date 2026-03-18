@@ -20,6 +20,9 @@ public class Stack<T> {
         return data.removeLast();
     }
 
+    public Boolean isEmpty() {
+        return data.isEmpty();
+    }
     public T peek() {
         if (data.isEmpty()) {
             throw new RuntimeException("Stack is empty");

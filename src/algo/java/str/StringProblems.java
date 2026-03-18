@@ -21,4 +21,13 @@ public class StringProblems {
         }
         return new String(strArray);
     }
+
+    /*
+    Leetcode: https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+
+    Submission:
+     */
+    public int longestSubString(String str) {
+        return -1;
+    }
 }

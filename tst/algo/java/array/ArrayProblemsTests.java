@@ -73,4 +73,12 @@ public class ArrayProblemsTests {
         result = sut.sumTwo(array, 20);
         assertNull(result);
     }
+
+    @Test
+    public void largestNumber_test() {
+        int[] nums = new int[] {3,30,34,5,9};
+        int result = sut.largestNumber(nums);
+
+        assertEquals(9534330, result);
+    }
 }

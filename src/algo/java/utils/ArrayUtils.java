@@ -1,10 +1,15 @@
 package algo.java.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ArrayUtils {
     public static void printArray(int[] array){
         System.out.print(Arrays.toString(array)); 
+    }
+
+    public static <T>  void printArray(ArrayList<T> array){
+        array.forEach(item -> System.out.print(item + ", "));
     }
 
     public static int[] mergeArray(int[] arrayA, int[] arrayB){
